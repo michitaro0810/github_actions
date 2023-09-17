@@ -12,4 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run a one-line script
-      run: echo Hello, world!
+      run: |
+        pip install pyspellchecker
+        python3 .github/workflows/naming_convention_checker.py
