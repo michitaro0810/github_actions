@@ -1,5 +1,7 @@
 import re
 from spellchecker import SpellChecker
+import os
+import subprocess
 spell = SpellChecker()
 #キャメルケースになっているかチェックする場合
 def is_cammelcase(target_string):
@@ -50,6 +52,7 @@ def is_pascalcase(target_string):
 # is_cammelcase("lowerCamelCasse")
 # is_cammelcase("lowerCamelId")
 # is_pascalcase("Book")
+print(os.environ['PR_NUMBER'])
 
 with open('docs/class_diagram_template.md') as f:
     num = 0

@@ -1,18 +1,18 @@
-name: test_label
+name: 命名規則検査
 
 on:
   pull_request:
     types: [opened, reopened, labeled ]
 
 jobs:
-  build:
+  scan:
     if: ${{ github.event.label.name == 'bug' }}
     runs-on: ubuntu-latest
-
+    env:
+      PR_NUMBER: ${{ github.event.number }}
     steps:
     - uses: actions/checkout@v2
-    - name: Run a one-line script
+    - name: 命名規則の検査開始
       run: |
         pip install pyspellchecker
         python3 .github/workflows/naming_convention_checker.py
-        ls
