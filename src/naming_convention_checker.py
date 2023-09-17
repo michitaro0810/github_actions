@@ -23,7 +23,7 @@ def is_cammelcase(target_string):
             print("正常なキャメルケースになっています")
             return True
 
-
+#テスト開始
 is_cammelcase("snake_case")
 is_cammelcase("UpperCamelCase")
 is_cammelcase("lowerCamelCasse")
