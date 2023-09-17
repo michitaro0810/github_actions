@@ -43,7 +43,7 @@ def is_pascalcase(target_string):
         else:
             print("正常なパスカルケースになっています")
             return True
-
+#test start
 is_cammelcase("snake_case")
 is_cammelcase("UpperCamelCase")
 is_cammelcase("lowerCamelCasse")
