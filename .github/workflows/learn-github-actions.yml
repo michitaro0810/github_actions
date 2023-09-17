@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PR_NUMBER: ${{ github.event.number }}
+      GH_REPO: ${{ github.repository }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2
@@ -34,6 +35,4 @@ jobs:
         pip install pyspellchecker
         python3 .github/workflows/database_naming_convention_checker.py
     - name: show diff files
-      run: |
-        diff_files=$(git diff --name-only HEAD ${base_branch} -- "${diff_path}" \ |tr "\n" " ")
-        echo "# diff_files: ${diff_files}"
+      run: gh pr diff ${number} --name-only
