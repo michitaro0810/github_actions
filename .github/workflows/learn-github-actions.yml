@@ -19,9 +19,7 @@ jobs:
         pip install pyspellchecker
         python3 .github/workflows/class_naming_convention_checker.py
     - name: show diff files
-      run: |
-        diff_files=$(git diff --name-only HEAD ${base_branch} -- "${diff_path}" \ |tr "\n" " ")
-        echo "# diff_files: ${diff_files}"
+      run: gh pr diff ${number} --name-only
   database_diagram_scaning:
     if: ${{ github.event.label.name == 'DB図' }}
     runs-on: ubuntu-latest
