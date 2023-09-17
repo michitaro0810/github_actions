@@ -15,3 +15,4 @@ jobs:
       run: |
         pip install pyspellchecker
         python3 .github/workflows/naming_convention_checker.py
+        ls
