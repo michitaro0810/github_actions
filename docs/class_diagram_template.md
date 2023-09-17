@@ -29,4 +29,5 @@
 |:--|:--|:--|:--:|
 |name|タイトル|String|
 |authorname|著者|String|
+|publishername|出版社|String|
 |price|定価|int|
