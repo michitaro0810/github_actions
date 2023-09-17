@@ -30,3 +30,11 @@
 |name|タイトル|String|
 |authorname|著者|String|
 |price|定価|int|
+
+### Purchase
+購入に対するクラス
+|フィールド名|和名|型|その他|
+|:--|:--|:--|:--:|
+|id|購入ID|int|
+|userId|ユーザーID|String|
+|bookId|書籍ID|String|
