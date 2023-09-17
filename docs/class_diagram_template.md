@@ -22,3 +22,11 @@
 |id|ユーザーID|String|
 |password|ログインパスワード|String|
 |name|名前|String|
+
+### Book
+ユーザーに対するクラス
+|フィールド名|和名|型|その他|
+|:--|:--|:--|:--:|
+|name|タイトル|String|
+|authorname|著者|String|
+|price|定価|int|
