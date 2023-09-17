@@ -5,16 +5,35 @@ on:
     types: [opened, reopened, labeled ]
 
 jobs:
-  scan:
-    if: ${{ github.event.label.name == 'bug' }}
+  class_diagram_scaning:
+    if: ${{ github.event.label.name == 'クラス図' }}
     runs-on: ubuntu-latest
     env:
       PR_NUMBER: ${{ github.event.number }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2
-    - name: 命名規則の検査開始
+    - name: クラス図命名規則の検査
       run: |
         pip install pyspellchecker
-        python3 .github/workflows/naming_convention_checker.py
-        
+        python3 .github/workflows/class_naming_convention_checker.py
+    - name: show diff files
+      run: |
+        diff_files=$(git diff --name-only HEAD ${base_branch} -- "${diff_path}" \ |tr "\n" " ")
+        echo "# diff_files: ${diff_files}"
+  database_diagram_scaning:
+    if: ${{ github.event.label.name == 'DB図' }}
+    runs-on: ubuntu-latest
+    env:
+      PR_NUMBER: ${{ github.event.number }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: DB図命名規則の検査
+      run: |
+        pip install pyspellchecker
+        python3 .github/workflows/database_naming_convention_checker.py
+    - name: show diff files
+      run: |
+        diff_files=$(git diff --name-only HEAD ${base_branch} -- "${diff_path}" \ |tr "\n" " ")
+        echo "# diff_files: ${diff_files}"
