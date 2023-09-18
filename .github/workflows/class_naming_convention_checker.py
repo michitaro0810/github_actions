@@ -58,6 +58,7 @@ def is_pascalcase(target_string):
 # is_pascalcase("Book")
 print(args[1])
 with open(args[1]) as f:
+    has_error = False
     num = 0
     field_flag = False
     for line in f:
@@ -66,7 +67,8 @@ with open(args[1]) as f:
             # print(line[4:][:-1])
             if not is_pascalcase(line[4:][:-1]):
                 print(str(num) +"行目の " + line[4:][:-1] +" がパスカルケースになっていません")
-                subprocess.call('gh pr comment ' + str(pr_number) + ' --body "' + str(num) +"行目のクラス名 " + line[4:][:-1] +' がパスカルケースになっていません"', shell=True)
+                has_error = True
+                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のクラス名 " + line[4:][:-1] +' がパスカルケースになっていません"', shell=True)
         if not line.startswith("|") and field_flag:
             field_flag = False
         if line.startswith("|フィールド名"):
@@ -75,5 +77,8 @@ with open(args[1]) as f:
             continue
         if line.startswith("|") and not line.startswith("|フィールド名") and field_flag:
             if not is_cammelcase(line[1:].split('|')[0]):
+                has_error = True
                 print(str(num) +"行目の " + line[1:].split('|')[0] +" がキャメルケースになっていません")
-                subprocess.call('gh pr comment ' + str(pr_number) + ' --body "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
+                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
+    if not has_error:
+        subprocess.call('gh pr review ' + str(pr_number) + ' -a -b "命名規則エラーは見つかりませんでした"', shell=True)
