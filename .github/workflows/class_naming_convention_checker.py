@@ -2,6 +2,9 @@ import re
 from spellchecker import SpellChecker
 import os
 import subprocess
+import sys
+
+args = sys.argv
 spell = SpellChecker()
 pr_number = os.environ['PR_NUMBER']
 #キャメルケースになっているかチェックする場合
@@ -53,8 +56,8 @@ def is_pascalcase(target_string):
 # is_cammelcase("lowerCamelCasse")
 # is_cammelcase("lowerCamelId")
 # is_pascalcase("Book")
-
-with open('docs/class_diagram_template.md') as f:
+print(args[1])
+with open(args[1]) as f:
     num = 0
     field_flag = False
     for line in f:
