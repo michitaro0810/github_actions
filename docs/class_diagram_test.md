@@ -22,7 +22,7 @@
 |id|ユーザーID|String|
 |password|ログインパスワード|String|
 |name|名前|String|
-|birthplace|出身地|String|
+|birthPlace|出身地|String|
 |birthday|誕生日|Date|
 
 ### Book
