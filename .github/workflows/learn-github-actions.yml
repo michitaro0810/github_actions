@@ -18,7 +18,7 @@ jobs:
       run:
         pip install pyspellchecker
     - name: scaning class diagram
-      run: gh pr diff ${PR_NUMBER} --name-only | xargs python3 .github/workflows/class_naming_convention_checker.py
+      run: gh pr diff ${PR_NUMBER} "*.md" --name-only | xargs python3 .github/workflows/class_naming_convention_checker.py
   database_diagram_scaning:
     if: ${{ github.event.label.name == 'DB図' }}
     runs-on: ubuntu-latest
