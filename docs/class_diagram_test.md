@@ -32,3 +32,4 @@
 |authorname|著者|String|
 |price|定価|int|
 |ReleaseDate|発売日|Date|
+|ReleaseTime|発売時間|TimeStamp|
