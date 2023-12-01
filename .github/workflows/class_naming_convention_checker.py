@@ -77,6 +77,7 @@ with open(args[1]) as f:
     for line in f:
         print(line)
         num += 1
+
         if line.startswith("###"):
             # print(line[4:][:-1])
             if not is_pascalcase(line[4:][:-1]):
@@ -94,12 +95,12 @@ with open(args[1]) as f:
                 has_error = True
                 print(str(num) +"行目の " + line[1:].split('|')[0] +" がキャメルケースになっていません")
                 subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
-        if line[1:].split('|')[2] == "date" or line[1:].split('|')[2] == "Date":
+            if line[1:].split('|')[2] == "date" or line[1:].split('|')[2] == "Date":
                 if not is_date(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日付型のフィールド名末尾がOnになっていません")
                     subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
-        if line[1:].split('|')[2] == "datetime" or line[1:].split('|')[2] == "Datetime" or line[1:].split('|')[2] == "DateTime":
+            if line[1:].split('|')[2] == "datetime" or line[1:].split('|')[2] == "Datetime" or line[1:].split('|')[2] == "DateTime":
                 if not is_datetime(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
