@@ -49,6 +49,19 @@ def is_pascalcase(target_string):
         else:
             # print("正常なパスカルケースになっています")
             return True
+    
+def is_date(target_string):
+        if target_string.endswith("On"):
+            return True
+        else:
+            return False
+        
+def is_datetime(target_string):
+        if target_string.endswith("At"):
+            return True
+        else:
+            return False
+    
         
 #test start
 # is_cammelcase("snake_case")
@@ -62,6 +75,7 @@ with open(args[1]) as f:
     num = 0
     field_flag = False
     for line in f:
+        print(line)
         num += 1
         if line.startswith("###"):
             # print(line[4:][:-1])
@@ -80,5 +94,15 @@ with open(args[1]) as f:
                 has_error = True
                 print(str(num) +"行目の " + line[1:].split('|')[0] +" がキャメルケースになっていません")
                 subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
+            if line[1:].split('|')[3] == "date" or line[1:].split('|')[3] == "Date":
+                if not is_date(line[1:].split('|')[0]):
+                    has_error = True
+                    print(str(num) +"行目の " + line[1:].split('|')[0] +" の日付型のフィールド名末尾がOnになっていません")
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
+            if line[1:].split('|')[3] == "datetime" or line[1:].split('|')[3] == "Datetime" or line[1:].split('|')[3] == "DateTime":
+                if not is_datetime(line[1:].split('|')[0]):
+                    has_error = True
+                    print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
     if not has_error:
         subprocess.call('gh pr review ' + str(pr_number) + ' -a -b "命名規則エラーは見つかりませんでした"', shell=True)

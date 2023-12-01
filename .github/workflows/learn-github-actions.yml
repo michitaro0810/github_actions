@@ -6,7 +6,7 @@ on:
 
 jobs:
   class_diagram_scaning:
-    if: ${{ github.event.label.name == 'クラス図' }}
+    if: ${{ github.event.label.name == 'クラス図インスペクション' }}
     runs-on: ubuntu-latest
     env:
       PR_NUMBER: ${{ github.event.number }}
@@ -17,10 +17,11 @@ jobs:
     - name: module installing
       run:
         pip install pyspellchecker
+        pip install nltk
     - name: scaning class diagram
       run: gh pr diff ${PR_NUMBER} "*.md" --name-only | xargs python3 .github/workflows/class_naming_convention_checker.py
   database_diagram_scaning:
-    if: ${{ github.event.label.name == 'DB図' }}
+    if: ${{ github.event.label.name == 'DB図インスペクション' }}
     runs-on: ubuntu-latest
     env:
       PR_NUMBER: ${{ github.event.number }}
@@ -30,6 +31,7 @@ jobs:
     - name: scaning db design
       run: |
         pip install pyspellchecker
+        pip install nltk
         python3 .github/workflows/database_naming_convention_checker.py
     - name: show diff files
       run: gh pr diff ${PR_NUMBER} --name-only
