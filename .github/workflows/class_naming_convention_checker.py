@@ -103,6 +103,8 @@ with open(args[1]) as f:
                     subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
             if line[1:].split('|')[2] == "datetime" or line[1:].split('|')[2] == "Datetime" or line[1:].split('|')[2] == "DateTime":
                 print("datetime")
+                print(line[1:].split('|')[0])
+                print(is_datetime(line[1:].split('|')[0]))
                 if not is_datetime(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
