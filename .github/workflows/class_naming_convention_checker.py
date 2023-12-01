@@ -96,11 +96,13 @@ with open(args[1]) as f:
                 print(str(num) +"行目の " + line[1:].split('|')[0] +" がキャメルケースになっていません")
                 subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
             if line[1:].split('|')[2] == "date" or line[1:].split('|')[2] == "Date":
+                print("date")
                 if not is_date(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日付型のフィールド名末尾がOnになっていません")
                     subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
             if line[1:].split('|')[2] == "datetime" or line[1:].split('|')[2] == "Datetime" or line[1:].split('|')[2] == "DateTime":
+                print("datetime")
                 if not is_datetime(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
