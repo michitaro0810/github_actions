@@ -23,6 +23,8 @@
 |password|ログインパスワード|String|
 |name|名前|String|
 |birthplace|出身地|String|
+|birthday|誕生日|String|
+|registedAt|登録日時|DateTime|
 
 ### Book
 ユーザーに対するクラス
@@ -31,4 +33,5 @@
 |name|タイトル|String|
 |authorname|著者|String|
 |price|定価|int|
-|ReleaseDate|発売日|Date|
+|ReleasedOn|発売日|Date|
+
