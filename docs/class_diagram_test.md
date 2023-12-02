@@ -38,4 +38,8 @@
 |price|定価|int|
 |releasedOn|発売日|Date|
 |birthday|誕生日|Date|
+|isOnSale|販売状況|Boolean|
+|hasAward|受賞状況|Boolean|
+|containsBonus|おまけの付録|boolean|
+|topFlag|売上トップかどうか|boolean|
 
