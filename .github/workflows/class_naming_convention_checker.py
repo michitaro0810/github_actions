@@ -4,11 +4,13 @@ import os
 import subprocess
 import sys
 import spacy
+import random
 from spacy.matcher import Matcher
 
 args = sys.argv
 spell = SpellChecker()
 pr_number = os.environ['PR_NUMBER']
+github_users = ['@test1','@test2','@test3','@test4']
 #キャメルケースになっているかチェックする場合
 def is_cammelcase(target_string):
     #まずスネークケースになっていないかチェック
@@ -93,7 +95,6 @@ def is_boolean(target_string):
     else:
         return False
 
-        
 #test start
 # is_cammelcase("snake_case")
 # is_cammelcase("UpperCamelCase")
@@ -108,13 +109,14 @@ with open(args[1]) as f:
     for line in f:
         print(line)
         num += 1
-
+        random_number_1 = random.randint(0, 3)
+        random_number_2 = random.randint(0, 3)
         if line.startswith("###"):
             # print(line[4:][:-1])
             if not is_pascalcase(line[4:][:-1]):
                 print(str(num) +"行目の " + line[4:][:-1] +" がパスカルケースになっていません")
                 has_error = True
-                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のクラス名 " + line[4:][:-1] +' がパスカルケースになっていません"', shell=True)
+                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のクラス名 " + line[4:][:-1] +' がパスカルケースになっていません \n ' + github_users[random_number_1] + 'さん，' + github_users[random_number_2] + 'さん，このミスが生じた原因と，修正方法をQuote replyで記入してください．"', shell=True)
         if not line.startswith("|") and field_flag:
             field_flag = False
         if line.startswith("|フィールド名"):
@@ -125,13 +127,13 @@ with open(args[1]) as f:
             if not is_cammelcase(line[1:].split('|')[0]):
                 has_error = True
                 print(str(num) +"行目の " + line[1:].split('|')[0] +" がキャメルケースになっていません")
-                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません"', shell=True)
+                subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +' がキャメルケースになっていません\n ' + github_users[random_number_1] + 'さん，' + github_users[random_number_2] + 'さん，このミスが生じた原因と，修正方法をQuote replyで記入してください．"', shell=True)
             if line[1:].split('|')[2] == "date" or line[1:].split('|')[2] == "Date":
                 print("date")
                 if not is_date(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日付型のフィールド名末尾がOnになっていません")
-                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません"', shell=True)
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日付型のフィールド名末尾がOnになっていません\n ' + github_users[random_number_1] + 'さん，' + github_users[random_number_2] + 'さん，このミスが生じた原因と，修正方法をQuote replyで記入してください．"', shell=True)
             if line[1:].split('|')[2] == "datetime" or line[1:].split('|')[2] == "Datetime" or line[1:].split('|')[2] == "DateTime":
                 print("datetime")
                 print(line[1:].split('|')[0])
@@ -139,7 +141,7 @@ with open(args[1]) as f:
                 if not is_datetime(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
-                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日時型のフィールド名末尾がAtになっていません"', shell=True)
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日時型のフィールド名末尾がAtになっていません\n ' + github_users[random_number_1] + 'さん，' + github_users[random_number_2] + 'さん，このミスが生じた原因と，修正方法をQuote replyで記入してください．"', shell=True)
             if line[1:].split('|')[2] == "boolean" or line[1:].split('|')[2] == "Boolean" or line[1:].split('|')[2] == "bool":
                 print("datetime")
                 print(line[1:].split('|')[0])
@@ -147,6 +149,6 @@ with open(args[1]) as f:
                 if not is_boolean(line[1:].split('|')[0]):
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の真偽値型のフィールド名がis,has,三単現動詞で始まっていません")
-                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の真偽値型のフィールド名がis,has,三単現動詞で始まっていません"', shell=True)
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の真偽値型のフィールド名がis,has,三単現動詞で始まっていません\n ' + github_users[random_number_1] + 'さん，' + github_users[random_number_2] + 'さん，このミスが生じた原因と，修正方法をQuote replyで記入してください．"', shell=True)
     if not has_error:
         subprocess.call('gh pr review ' + str(pr_number) + ' -a -b "命名規則エラーは見つかりませんでした"', shell=True)
