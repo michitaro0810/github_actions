@@ -109,8 +109,11 @@ with open(args[1]) as f:
     for line in f:
         print(line)
         num += 1
-        random_number_1 = random.randint(0, 3)
-        random_number_2 = random.randint(0, 3)
+        while True:
+            random_number_1 = random.randint(0, 3)
+            random_number_2 = random.randint(0, 3)
+            if random_number_1 != random_number_2:
+                break
         if line.startswith("###"):
             # print(line[4:][:-1])
             if not is_pascalcase(line[4:][:-1]):
