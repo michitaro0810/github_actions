@@ -3,6 +3,8 @@ from spellchecker import SpellChecker
 import os
 import subprocess
 import sys
+import spacy
+from spacy.matcher import Matcher
 
 args = sys.argv
 spell = SpellChecker()
@@ -61,7 +63,36 @@ def is_datetime(target_string):
             return True
         else:
             return False
-    
+def camel_tokenizer(target_string):
+    splited_list = re.split('(?=[A-Z])', target_string)
+    return splited_list
+
+def lowerer(target_list):
+    return list(map(lambda x: x.lower(), target_list))
+
+def is_3rd_person_singular_verb(word):
+    # spaCyの英語モデルをロード
+    nlp = spacy.load("en_core_web_sm")
+    # "He"が付いた文を作成
+    text = f"He {word}"
+    # spaCyのドキュメントオブジェクトを取得
+    doc = nlp(text)
+    # Matcherを初期化
+    matcher = Matcher(nlp.vocab)
+    # カスタムルールを追加
+    pattern = [{"POS": "PRON", "lower": "he"}, {"POS": "VERB", "tag": "VBZ"}]
+    matcher.add("3rd_person_singular", [pattern])
+    # Matcherを適用
+    matches = matcher(doc)
+    # マッチがあれば三単現動詞とみなす
+    return bool(matches)
+
+def is_boolean(target_string):
+    if target_string.startswith("is") or target_string.startswith("has") or is_3rd_person_singular_verb(camel_tokenizer(target_string)[0]):
+        return True
+    else:
+        return False
+
         
 #test start
 # is_cammelcase("snake_case")
@@ -109,5 +140,13 @@ with open(args[1]) as f:
                     has_error = True
                     print(str(num) +"行目の " + line[1:].split('|')[0] +" の日時型のフィールド名末尾がAtになっていません")
                     subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の日時型のフィールド名末尾がAtになっていません"', shell=True)
+            if line[1:].split('|')[2] == "boolean" or line[1:].split('|')[2] == "Boolean" or line[1:].split('|')[2] == "bool":
+                print("datetime")
+                print(line[1:].split('|')[0])
+                print(is_boolean(line[1:].split('|')[0]))
+                if not is_boolean(line[1:].split('|')[0]):
+                    has_error = True
+                    print(str(num) +"行目の " + line[1:].split('|')[0] +" の真偽値型のフィールド名がis,has,三単現動詞で始まっていません")
+                    subprocess.call('gh pr review ' + str(pr_number) + ' -r -b "' + str(num) +"行目のフィールド名 " + line[1:].split('|')[0] +'の真偽値型のフィールド名がis,has,三単現動詞で始まっていません"', shell=True)
     if not has_error:
         subprocess.call('gh pr review ' + str(pr_number) + ' -a -b "命名規則エラーは見つかりませんでした"', shell=True)
