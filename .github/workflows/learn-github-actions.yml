@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: module installing
-      run:
+      run: |
         pip install pyspellchecker
         pip install nltk
         pip install spacy
