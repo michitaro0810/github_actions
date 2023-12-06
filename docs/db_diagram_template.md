@@ -16,14 +16,14 @@
 
 |フィールド名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--|:--|:--:|
-|id|ユーザーID|String|〇|NO||
-|password|ログインパスワード|String||NO||
-|name|名前|String||NO||
+|id|ユーザーID|varchar(10)|〇|NO||
+|password|ログインパスワード|varchar(10)||NO||
+|name|名前|varchar(10)||NO||
 
 ### books
 
 |フィールド名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--|:--|:--:|
-|name|タイトル|String|〇|NO||
-|author_name|著者|String||NO||
-|price|定価|int||NO||
+|name|タイトル|varchar(10)|〇|NO||
+|author_name|著者|varchar(10)||NO||
+|price|定価|integer||NO||
