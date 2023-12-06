@@ -25,5 +25,5 @@
 |フィールド名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--|:--|:--:|
 |name|タイトル|String|〇|NO||
-|authorname|著者|String||NO||
+|author_name|著者|String||NO||
 |price|定価|int||NO||
