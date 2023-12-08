@@ -37,4 +37,4 @@ jobs:
         pip install spacy
         python3 -m spacy download en_core_web_sm
     - name: show diff files
-      run: grep -r -include='*.md' | gh pr diff ${PR_NUMBER} --name-only | xargs python3 .github/workflows/class_naming_convention_checker.py
+      run: grep -r -include='*.md' | gh pr diff ${PR_NUMBER} --name-only | xargs python3 .github/workflows/db_naming_convention_checker.py
