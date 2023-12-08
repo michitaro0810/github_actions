@@ -175,7 +175,7 @@
 |plan_grade|履修予定学年・学期|integer||NO|1:1春,2:1秋,3:2春,4:2秋|
 
 ## subjects
-|カラム名|和名|型|主キー|NULL|その他|
+|カラム|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
 |teacher_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
 |subject_id|科目ID|integer|○|NO|オートインクリメント|
