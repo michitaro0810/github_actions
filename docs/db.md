@@ -170,14 +170,14 @@
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
 |no|識別ナンバー|integer|○|NULL|オートインクリメント|
-|student_id|学生ID|varchar(10)||NO|外部キー:userテーブルのid|
-|subject_id|科目ID|integer||NO|外部キー:subjectテーブルのsubjectid|
-|plan_grade|履修予定学年・学期|integer||NO|1:1春,2:1秋,3:2春,4:2秋|
+|students_id|学生ID|varchar(10)||NO|外部キー:userテーブルのid|
+|subjects_id|科目ID|integer||NO|外部キー:subjectテーブルのsubjectid|
+|plan_grades|履修予定学年・学期|integer||NO|1:1春,2:1秋,3:2春,4:2秋|
 
-## subjects
+## subject
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
-|teacher_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
+|teacherueue_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
 |subject_id|科目ID|integer|○|NO|オートインクリメント|
 |division|科目区分|integer||NO|1:専攻基盤科目,2:専攻基礎科目,3:専攻展開科目,4:専攻発展科目,5:特別研究,6:自専攻（自プログラム）以外の科目|
 |unit|単位数|integer||NO||
