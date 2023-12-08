@@ -177,7 +177,7 @@
 ## subject
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
-|teacherueue_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
+|teacherueueu_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
 |subject_id|科目ID|integer|○|NO|オートインクリメント|
 |division|科目区分|integer||NO|1:専攻基盤科目,2:専攻基礎科目,3:専攻展開科目,4:専攻発展科目,5:特別研究,6:自専攻（自プログラム）以外の科目|
 |unit|単位数|integer||NO||
