@@ -13,13 +13,13 @@
 |8版|吉田|2023/01/18|subject_user_relationsに主キーを追加|
 |9版|塚越|2023/01/20|usersテーブルのidにBINARY属性を追加|
 |10版|小林|2023/01/27|型定義の修正|
-|11版|小島|2023/02/03|提出物の種類からお知らせを削除|
+|11版|小島|2023/02/03|提出物の種類からお知らせ削除|
 
 ****
 ### 改版履歴詳細
 |版|作成者|作成日|概要|
 |:--|:--|:--|:--|
-|2版|吉田|2022/12/06|クラス図を受け手修正|
+|2版|吉田|2022/12/06|クラス図を受け手を修正|
 
 ・新たなテーブルを追加  
 ・NOTNULL制約の活用を復活  
@@ -170,14 +170,14 @@
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
 |no|識別ナンバー|integer|○|NULL|オートインクリメント|
-|students_id|学生ID|varchar(10)||NO|外部キー:userテーブルのid|
-|subjects_id|科目ID|integer||NO|外部キー:subjectテーブルのsubjectid|
-|plan_grades|履修予定学年・学期|integer||NO|1:1春,2:1秋,3:2春,4:2秋|
+|student_id|学生ID|varchar(10)||NO|外部キー:userテーブルのid|
+|subject_id|科目ID|integer||NO|外部キー:subjectテーブルのsubjectid|
+|plan_grade|履修予定学年・学期|integer||NO|1:1春,2:1秋,3:2春,4:2秋|
 
-## subject
+## subjects
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
-|teacherueui_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
+|teacher_id|教員ID|varchar(10)||NO|外部キー:userテーブルのid|
 |subject_id|科目ID|integer|○|NO|オートインクリメント|
 |division|科目区分|integer||NO|1:専攻基盤科目,2:専攻基礎科目,3:専攻展開科目,4:専攻発展科目,5:特別研究,6:自専攻（自プログラム）以外の科目|
 |unit|単位数|integer||NO||
@@ -185,7 +185,7 @@
 |semester|開講学期|integer||NO|1:1年春,2:1年秋,3:2年春,4:2年秋|
 |is_delete|科目削除判断|boolean||NO|TRUE:削除,FALSE:未削除|
 
-## basic_skill
+## basic_skills
 |カラム名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--:|:--:|:--|
 |student_id|学生ID|varchar(10)||NO|外部キー:userテーブルのid|
