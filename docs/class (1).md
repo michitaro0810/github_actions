@@ -234,6 +234,7 @@
 |noticeId|お知らせID|Integer|Noticeクラスのnoticeid|
 |toUserId|宛先人|String|Userクラスのid|
 
+
 ### SubmissionDeadline
 ## 提出物の締切に対するクラス
 |フィールド名|和名|型|その他|
