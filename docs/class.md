@@ -1,6 +1,6 @@
 # クラス図第7版(2022/12/06作成)
 
-### 改版履歴
+## 改版履歴
 |版|作成者|作成日|概要|
 |:--|:--|:--|:--|
 |1版|全員|2022/12/2|クラス図の第一回を作成|
@@ -14,7 +14,7 @@
 
 
 
-### 改版履歴詳細
+## 改版履歴詳細
 |版|作成者|作成日|概要|
 |:--|:--|:--|:--|
 |2版|全員|2022/12/2|クラスの名前を変更、関連を修正|　
@@ -64,10 +64,10 @@
 ![class_09](class_09.png)
 - クラス図の写真です。  
 
-### クラスの説明  
-## User
-### ユーザーに対するクラス
-|カラム名|和名|型|その他|
+## クラスの説明  
+### User
+## ユーザーに対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |id|ユーザーID|String|
 |password|ログインパスワード|String|
@@ -75,9 +75,9 @@
 |name|名前|String|
 |loginStatus|ログイン可能判断|Boolean|
 
-## Student
-### 学生に対するクラス
-|カラム名|和名|型|その他|
+### Student
+## 学生に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|ユーザーID|String|Userクラスのid|
 |teacherId|担当教員ID|String|Userクラスのid|
@@ -85,9 +85,9 @@
 |belong|所属|Enum|次世代日本型教育システム研究開発専攻,教育支援協働実践開発専攻：教育AI研究プログラム,教育支援協働実践開発専攻：臨床心理学プログラム,教育支援協働実践開発専攻：教育協働研究プログラム|
 
 
-## MasterThesis 
-### 修士論文または課題研究に対するクラス
-|カラム名|和名|型|その他|
+### MasterThesis 
+## 修士論文または課題研究に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |createDate|登録した日付|Date|
@@ -97,9 +97,9 @@
 |remandStatus|差し戻しステータス|Enum|未登録,確認中,差し戻し中,登録済み|
 |registJudgement|登録完了|Boolean|
 
-## FieldResearch 
-### フィールド研究に対するクラス
-|カラム名|和名|型|その他|
+### FieldResearch 
+## フィールド研究に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |gradeCount|実施学年|Integer||
@@ -116,9 +116,9 @@
 |organizationMail|外部組織メールアドレス|String|
 |organizationEmergency|外部組織緊急連絡先|String|
 
-## ResearchPlan 
-### 研究計画に対するクラス
-|カラム名|和名|型|その他|
+### ResearchPlan 
+## 研究計画に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |createDate|登録した日付|Date|
@@ -130,9 +130,9 @@
 |gradeCount|学年|Integer|
 
 
-## StudyPlan
-### 修学計画に対するクラス
-|カラム名|和名|型|その他|
+### StudyPlan
+## 修学計画に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |remandStatus|差し戻しステータス|Enum|未登録,確認中,差し戻し中,登録済み|
@@ -140,17 +140,17 @@
 |gradeCount|学年|Integer|
 |createDate|登録した日付|Date|
 
-## SubjectUserRelation
-### 学生が何の科目を履修しているかに対するクラス
-|カラム名|和名|型|その他|
+### SubjectUserRelation
+## 学生が何の科目を履修しているかに対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |subjectId|科目ID|Integer|Subjectクラスのsubjectid|
 |planGrade|履修予定学年・学期|String|
 
-## Subject
-### 科目に対するクラス
-|カラム名|和名|型|その他|
+### Subject
+## 科目に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |teacherId|教員ID|String|Userクラスのid|
 |subjectId|科目ID|Integer|Subjectクラスのsubjectid|
@@ -159,9 +159,9 @@
 |subjectName|科目名|String|
 |semester|開講学期|Enum|
 
-## BasicSkills
-### 社会人基礎スキルに対するクラス
-|カラム名|和名|型|その他|
+### BasicSkills
+## 社会人基礎スキルに対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |studentId|学生ID|String|Userクラスのid|
 |expertise|専門力|Enum|S,A,B,C|
@@ -175,9 +175,9 @@
 |createDate|登録した日付|Date|
 
 
-## Notice
-### お知らせに対するクラス
-|カラム名|和名|型|その他|
+### Notice
+## お知らせに対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |fromUserId|差出人|String|Userクラスのid|
 |noticeId|お知らせID|Integer|
@@ -189,16 +189,16 @@
 
 
 
-## Destination
-### お知らせの宛先に対するクラス
-|カラム名|和名|型|その他|
+### Destination
+## お知らせの宛先に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |noticeId|お知らせID|Integer|Noticeクラスのnoticeid|
 |toUserId|宛先人|String|Userクラスのid|
 
-## SubmissionDeadline
-### 提出物の締切に対するクラス
-|カラム名|和名|型|その他|
+### SubmissionDeadline
+## 提出物の締切に対するクラス
+|フィールド名|和名|型|その他|
 |:--|:--|:--|:--:|
 |submissionType|提出物の種類|Enum|1年修学計画書,2年修学計画書,1年研究計画書,2年研究計画書,入学時社会人基礎スキル,1年社会人基礎スキル,2年社会人基礎スキル,修士論文学位申請,Aフィールド研究,Bフィールド研究|
 |gradeCount|学年|Integer||
@@ -206,9 +206,9 @@
 |end|提出締切日|Date||
 
 
-### 2.画面シナリオURL  
+## 2.画面シナリオURL  
 https://www.figma.com/file/FkWkjimmkPJ90uacywH7hq/Screen-Scenario?node-id=0%3A1&t=wQmyV8SttNmQyGCf-0
 　
     
-### 3.機能仕様書URL  
+## 3.機能仕様書URL  
 https://github.com/HazeyamaLab/SE22G1/blob/master/docs/function_specification.md
