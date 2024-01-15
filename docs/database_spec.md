@@ -109,7 +109,7 @@
 |grade|座席クラス|VARCHAR(64)||NO|seat_grade_typesのname|
 |plane_model|航空機の型式|VARCHAR(255)|○|NO|planesテーブルのmodel|
 
-### base_miles_of_section
+### base_mile_of_section
 
 |フィールド名|和名|型|主キー|NULL|その他|
 |:--|:--|:--|:--|:--|:--|
