@@ -45,7 +45,10 @@ def is_all_plural_snakecase(target_string):
     if not is_snakecase(target_string):
         return False
     words = target_string.split('_')
-    return is_plural(words[-1])
+    for word in words:
+        if is_plural(word):
+            return True
+    return False
 
 
 #スネークケースかつすべて単数の場合
