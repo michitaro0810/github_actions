@@ -23,6 +23,11 @@
 |password|ログインパスワード|String|
 |name|名前|String|
 |birthplace|出身地|String|
+|birthday|誕生日|String|
+|recordedAt|登録日時|DateTime|
+|UpdatedOn|更新日時|DateTime|
+
+
 
 ### Book
 ユーザーに対するクラス
@@ -31,4 +36,10 @@
 |name|タイトル|String|
 |authorname|著者|String|
 |price|定価|int|
-|ReleaseDate|発売日|Date|
+|releasedOn|発売日|Date|
+|birthday|誕生日|Date|
+|isOnSale|販売状況|Boolean|
+|hasAward|受賞状況|Boolean|
+|containsBonus|おまけの付録|boolean|
+|topFlag|売上トップかどうか|boolean|
+
